@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/students',[StudentController::class,'index']);
+Route::get('/teachers',[TeacherController::class,'index']);
 
 Auth::routes();
 
