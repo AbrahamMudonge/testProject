@@ -19,7 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/students',[StudentController::class,'index']);
+Route::post('/submit-students',[StudentController::class,'store']);
 Route::get('/teachers',[TeacherController::class,'index']);
+Route::post('/submit-teacher',[TeacherController::class,'store']);
 
 Auth::routes();
 
