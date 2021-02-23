@@ -1,60 +1,3 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="text-white card-header bg-info">
-                    <h1 class="card-title">Teachers
-                    <!-- add new Teacher modal button-->
-                    <a href="#" class="float-right btn btn-dark btn-sm" data-target="#addTeacher" data-toggle="modal">Add</a>
-                   <!-- display success message -->
-                    @if (session ('message'))
-                        <div class="alert alert-success">
-                        <small>{{session('message')}}</small>
-                        
-                        </div>
-                        @endif
-                    </h1>
-                </div>
-
-                <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                          <th>Teacher Names</th>
-                          <th>Phone Number</th>
-                          <th>Bio</th>
-                          <th>Created On</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @forelse ($showTeachers as $teacher)
-                        <tr>
-                          <td>{{$teacher->teacherNames}}</td>
-                          <td>{{$teacher->phoneNumber}}</td>
-                          <td>{{$teacher->bio}}</td>
-                          <!-- diffforhumans helps to imput the created at in form of sec min days -->
-                          <td>{{$teacher->created_at->diffForHumans()}}</td>
-                          
-                        </tr>
-                        @empty
-                        <spam class="alert alert-danger">No Teacher found</span>
-                      @endforelse
-                    </tbody>
-                
-                
-                
-                
-                
-                
-                </table>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="addTeacher" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -106,4 +49,3 @@
     </div>
   </div>
 </div>
-@endsection

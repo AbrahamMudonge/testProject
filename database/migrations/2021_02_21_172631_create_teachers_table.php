@@ -18,6 +18,7 @@ class CreateTeachersTable extends Migration
             $table->string('teacherNames');
             $table->integer('phoneNumber');
             $table->text('bio');
+            $table->string('create_by');
             $table->timestamps();
             
         });

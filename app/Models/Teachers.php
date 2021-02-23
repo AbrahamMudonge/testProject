@@ -13,6 +13,7 @@ class Teachers extends Model
         'teacherNames',
         'phoneNumber',
         'bio',
+        'create_by'
         
     ];
 }
