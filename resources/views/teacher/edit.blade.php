@@ -8,8 +8,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/submit-teacher" method="post" autocomplete="off">
-        @csrf
+        <form action="/teacher-update/{{$teacher->id}}" method="post" autocomplete="off">
+            @csrf 
+            @method('PUT')
             <div class="row">
                <div class="col-lg-6"> 
                    <div class="form-group">

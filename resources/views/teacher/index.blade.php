@@ -46,12 +46,17 @@
                           <td>
                               <a href='#'data-toggle='modal' data-target='#viewTeacher-{{$teacher->id}}' class='btn btn-primary btn-sm'>view</a>
                               <a href='#' data-toggle='modal' data-target='#editTeacher-{{$teacher->id}}'  class='btn btn-success btn-sm'>edit</a>
-                              <a href='#'class='btn btn-danger btn-sm'>delete</a>
+                              @include('teacher.edit')
+                              <a href='#'class='btn btn-danger btn-sm' onclick="confirm('you are about to delete {{$teacher->teacherNames}}?')  ? document.getElementById('deleted-teacher-{{$teacher->id}}').submit(): '' ">delete</a>
+                              <form action="/teacher-delete/{{$teacher->id}}" method="post" id="deleted-teacher-{{$teacher->id}}">
+                                    @csrf
+                                    @method('delete')
+                              </form>
                           </td>
                           
                         </tr>
                         
-                        @include('teacher.edit')
+                        
                         @include('teacher.view')
                         @empty
                         <spam class="alert alert-danger">No Teacher found</span>

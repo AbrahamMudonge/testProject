@@ -47,5 +47,22 @@ class TeacherController extends Controller
         }
 
     }
-    //
+    // update teacher
+    public function update(Request $request, $id)
+    {
+        // find teacher id
+        $findTeacherById= Teachers::find($id);
+        //update all the request from the form
+        $findTeacherById->update ($request->all());
+        //dd($findTeacherById);
+        return back()->with('message','Teacher updated successfully');
+    
+    }
+    //delete Teacher
+    public function destroy($id)
+    {
+        $findTeacher=Teachers::find($id);
+        $findTeacher->delete();
+        return back()->with('message','Teacher Deleted Successfully');
+    }
 }
