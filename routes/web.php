@@ -18,13 +18,17 @@ use App\Http\Controllers\TeacherController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/students',[StudentController::class,'index']);
-Route::post('/submit-students',[StudentController::class,'store']);
-Route::get('/teachers',[TeacherController::class,'index']);
-Route::post('/submit-teacher',[TeacherController::class,'store']);
-Route::put('/teacher-update/{id}',[TeacherController::class,'update']);
-Route::delete('/teacher-delete/{id}',[TeacherController::class,'destroy']);
+Auth::routes(['verify'=>true]);
 
-Auth::routes();
+Route::group(  ['middleware'=>['web','auth','verified']],
+function(){
+    Route::get('/students',[StudentController::class,'index']);
+    Route::post('/submit-students',[StudentController::class,'store']);
+    Route::get('/teachers',[TeacherController::class,'index']);
+    Route::post('/submit-teacher',[TeacherController::class,'store']);
+    Route::put('/teacher-update/{id}',[TeacherController::class,'update']);
+    Route::delete('/teacher-delete/{id}',[TeacherController::class,'destroy']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+}   );

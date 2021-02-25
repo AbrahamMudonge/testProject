@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Auth;
 class TeacherController extends Controller
 {
     //authenticate student page
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
         //select *from students;
         //select from students order by created_at desc;
         //$showTeachers =Teachers::all();
-        $showTeachers =Teachers::OrderBy('created_at','desc')->paginate(3);
+        $showTeachers =Teachers::OrderBy('created_at','desc')->simplepaginate(3);
         $countTeachers=Teachers::count();
         return view ('teacher.index',compact('showTeachers','countTeachers'));
     }
